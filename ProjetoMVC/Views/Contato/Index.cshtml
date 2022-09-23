@@ -5,10 +5,28 @@
 
 <div class="text-center">
 
-    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-5">
         @*Para redirecionar ao clicar no botão, colocamos o "asp-controller" e o "asp-action"*@
         <a class="btn btn-primary" role="button" asp-controller="Contato" asp-action="CriarContato">Adicionar novo contato</a>
     </div>
+
+    @*Vamos ter que fazer uma tratativa para quando der erro, exibir o modal (alerta correto)*@
+
+    @if(TempData["MensagemSucesso"] != null)
+    {
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" aria-label="Close">X</button>
+        @TempData["Mensagemsucesso"]
+    </div>
+    }
+
+    @if(TempData["MensagemErro"] != null)
+    {
+    <div class="alert alert-danger mb-5" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" aria-label="Close">X</button>
+        @TempData["MensagemErro"]
+    </div>
+    }
 
     <h1 class="display-4">Listagem de contatos</h1>
 
