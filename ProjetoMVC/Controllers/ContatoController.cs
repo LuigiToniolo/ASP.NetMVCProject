@@ -22,19 +22,36 @@ namespace ProjetoMVC.Controllers
         {
             return View();
         }
-        public IActionResult EditarContato()
+        public IActionResult EditarContato(int id)
         {
-            return View();
+            ContatoModel contato = _contatoRepositorio.ListarPorId(id);
+            return View(contato);
         }
-        public IActionResult ApagarConfirmacao()
+        public IActionResult ApagarConfirmacao(int id)
         {
-            return View();
+            ContatoModel contato = _contatoRepositorio.ListarPorId(id); // --> Precisa também buscar um contato pelo id
+            return View(contato);
         }
+
+        public IActionResult Apagar(int id)
+        {
+            _contatoRepositorio.Apagar(id);
+            return RedirectToAction("Index");
+        }
+
         [HttpPost]
         public IActionResult Criar(ContatoModel contato)
         {
             //Fazer a insersão desse registro, injetar o IContatoRepositorio de ContatoRepositorio
             _contatoRepositorio.Adicionar(contato);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult Alterar(ContatoModel contato)
+        {
+            //Fazer a insersão desse registro, injetar o IContatoRepositorio de ContatoRepositorio
+            _contatoRepositorio.Atualizar(contato);
             return RedirectToAction("Index");
         }
 
