@@ -375,3 +375,4 @@ C:\Users\Luigi\Documents\codigos\ProjetoMVC\ProjetoMVC\bin\Debug\net5.0\runtimes
 C:\Users\Luigi\Documents\codigos\ProjetoMVC\ProjetoMVC\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
 C:\Users\Luigi\Documents\codigos\ProjetoMVC\ProjetoMVC\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
 C:\Users\Luigi\Documents\codigos\ProjetoMVC\ProjetoMVC\bin\Debug\net5.0\ZstdNet.dll
+C:\Users\Luigi\Documents\codigos\ProjetoMVC\ProjetoMVC\obj\Debug\net5.0\Razor\Views\Usuario\Index.cshtml.g.cs
