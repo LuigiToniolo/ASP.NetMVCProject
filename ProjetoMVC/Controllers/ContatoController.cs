@@ -35,24 +35,62 @@ namespace ProjetoMVC.Controllers
 
         public IActionResult Apagar(int id)
         {
-            _contatoRepositorio.Apagar(id);
-            return RedirectToAction("Index");
+            try
+            {
+                _contatoRepositorio.Apagar(id);
+                TempData["MensagemSucesso"] = "Contato deletado com sucesso!";
+                return RedirectToAction("Index");
+            }
+            catch (System.Exception erro)
+            {
+                TempData["MensagemErro"] = $"Ops, não conseguimos deletar o contato, tente novamente. Detalhe do erro: {erro.Message}";
+                return RedirectToAction("Index");
+            }
         }
 
         [HttpPost]
-        public IActionResult Criar(ContatoModel contato)
+        public IActionResult CriarContato(ContatoModel contato)
         {
-            //Fazer a insersão desse registro, injetar o IContatoRepositorio de ContatoRepositorio
-            _contatoRepositorio.Adicionar(contato);
-            return RedirectToAction("Index");
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    //Fazer a insersão desse registro, injetar o IContatoRepositorio de ContatoRepositorio
+                    _contatoRepositorio.Adicionar(contato);
+                    TempData["MensagemSucesso"] = "Contato cadastrado com sucesso!";
+                    return RedirectToAction("Index");
+                }
+                // Agora iremos fazer um tratamento de erro com "try" e "catch"
+
+                return View(contato);
+            }
+            catch (System.Exception erro)
+            {
+                TempData["MensagemErro"] = $"Ops, não conseguimos cadastrar o contato, tente novamente. Detalhe do erro: {erro.Message}";
+                return RedirectToAction("Index");
+            }
         }
 
         [HttpPost]
         public IActionResult Alterar(ContatoModel contato)
         {
-            //Fazer a insersão desse registro, injetar o IContatoRepositorio de ContatoRepositorio
-            _contatoRepositorio.Atualizar(contato);
-            return RedirectToAction("Index");
+            try
+            {
+                //Fazer a insersão desse registro, injetar o IContatoRepositorio de ContatoRepositorio
+                if (ModelState.IsValid)
+                {
+                    _contatoRepositorio.Atualizar(contato);
+                    TempData["MensagemSucesso"] = "Contato editado com sucesso!";
+                    return RedirectToAction("Index");
+                }
+
+                return View("EditarContato", contato);
+            }
+            catch(System.Exception erro)
+            {
+                TempData["MensagemErro"] = $"Ops, não conseguimos editar o contato, tente novamente. Detalhe do erro: {erro.Message}";
+                return RedirectToAction("Index");
+            }
         }
 
     }
