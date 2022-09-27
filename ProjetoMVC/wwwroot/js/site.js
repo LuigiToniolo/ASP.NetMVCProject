@@ -3,6 +3,7 @@
 
 // Write your JavaScript code.
 
+<<<<<<< HEAD
 
 
 $(document).ready(function () {
@@ -42,3 +43,8 @@ function getDataTable(id) {
         }
     });
 }
+=======
+$('.close-alert').click(function () {
+    $('.alert').hide('hide');
+});
+>>>>>>> validandoFormulario
