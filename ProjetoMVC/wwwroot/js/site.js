@@ -6,7 +6,14 @@
 
 
 $(document).ready(function () {
-    $('#table-contatos').DataTable({
+    getDataTable('#table-contatos');
+    getDataTable('#table-usuarios');
+});
+
+// Criar uma function para nao ter que copiar o código para colocar a tabela tanto para a listagem de usuários, quanto para a listagem de contatos
+
+function getDataTable(id) {
+    $(id).DataTable({
         "ordering": true,
         "paging": true,
         "searching": true,
@@ -34,4 +41,4 @@ $(document).ready(function () {
             }
         }
     });
-});
+}

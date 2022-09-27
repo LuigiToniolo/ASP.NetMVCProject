@@ -1,0 +1,40 @@
+﻿@*Para vincular uma model a uma view:*@
+@model UsuarioModel
+@{
+    ViewData["Title"] = "Criar Usuario";
+}
+
+<div class="text-center">
+
+    <h1 class="display-4">Cadastrar usuários</h1> 
+
+</div>
+
+<form asp-controller="Usuario" asp-action="Criar" method="post">
+
+    <div class="form-group">
+        <label for="nome">Nome do Usuário</label>
+        <input type="text" asp-for="Name" class="form-control" placeholder="José da Silva">
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputEmail1">E-mail do usuário</label>
+        <input type="email" asp-for="Email" class="form-control" placeholder="jose@gmail.com">
+    </div>
+
+    <div class="form-group">
+        <label for="nome">Login</label>
+        <input type="text" asp-for="Login" class="form-control" placeholder="Login do usuário">
+    </div>    
+
+    <div class="form-group">
+        <label for="celular">Perfil</label>
+        <input type="text" asp-for="Login" class="form-control" placeholder="Login do usuário">
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-block">Adicionar</button>
+    <a class="btn btn-secondary btn-block" asp-controller="Contato" asp-action="Index" role="button">Voltar</a>
+</form>
+
+
+@*Para mapear cada input desse formulário: colocar "asp-for:"Nome" que é o atributo que está na model*@

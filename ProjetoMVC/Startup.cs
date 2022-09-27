@@ -28,8 +28,11 @@ namespace ProjetoMVC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddEntityFrameworkMySQL().AddDbContext<BancoContext>(o => o.UseMySQL(Configuration.GetConnectionString("DataBase")));
+            services.AddEntityFrameworkMySQL()
+                .AddDbContext<BancoContext>(o => o.UseMySQL(Configuration.GetConnectionString("DataBase")));
+
             services.AddScoped<IContatoRepositorio, ContatoRepositorio>();
+            services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
