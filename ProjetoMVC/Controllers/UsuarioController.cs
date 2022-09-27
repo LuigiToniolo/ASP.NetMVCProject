@@ -19,30 +19,34 @@ namespace ProjetoMVC.Controllers
 
             return View(usuarios);
         }
-        public IActionResult CriarContato()
+        public IActionResult CriarUsuario()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult Criar(UsuarioModel usuario)
+        public IActionResult CriarUsuario(UsuarioModel usuario)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
+                    //Fazer a insersão desse registro, injetar o IContatoRepositorio de ContatoRepositorio
                     usuario = _usuarioRepositorio.Adicionar(usuario);
-
-                    TempData["MensagemSucesso"] = "Contato cadastrado com sucesso!";
+                    TempData["MensagemSucesso"] = "Usuario cadastrado com sucesso!";
                     return RedirectToAction("Index");
                 }
+                // Agora iremos fazer um tratamento de erro com "try" e "catch"
+
                 return View(usuario);
             }
             catch (Exception erro)
             {
-                TempData["MensagemErro"] = "$Ops, não conseguimos cadastrar seu contato, tente novamente, detalhe do erro: {erro.Message}";
+                TempData["MensagemErro"] = $"Ops, não conseguimos cadastrar o usuario, tente novamente. Detalhe do erro: {erro.Message}";
                 return RedirectToAction("Index");
             }
         }
+
+
     }
 }
