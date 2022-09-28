@@ -3,6 +3,7 @@ using ProjetoMVC.Models;
 using ProjetoMVC.Repositorio;
 using System;
 using System.Collections.Generic;
+using System.Xml.Linq;
 
 namespace ProjetoMVC.Controllers
 {
@@ -22,6 +23,33 @@ namespace ProjetoMVC.Controllers
         public IActionResult CriarUsuario()
         {
             return View();
+        }
+
+        public IActionResult EditarUsuario(int id)
+        {
+            UsuarioModel usuario = _usuarioRepositorio.BuscarPorId(id);
+            return View(usuario);
+        }
+
+        public IActionResult ApagarConfirmacao(int id)
+        {
+            UsuarioModel usuario = _usuarioRepositorio.BuscarPorId(id); // --> Precisa também buscar um contato pelo id
+            return View(usuario);
+        }
+
+        public IActionResult Apagar(int id)
+        {
+            try
+            {
+                _usuarioRepositorio.Apagar(id);
+                TempData["MensagemSucesso"] = "Usuário deletado com sucesso!";
+                return RedirectToAction("Index");
+            }
+            catch (System.Exception erro)
+            {
+                TempData["MensagemErro"] = $"Ops, não conseguimos deletar o usuário, tente novamente. Detalhe do erro: {erro.Message}";
+                return RedirectToAction("Index");
+            }
         }
 
         [HttpPost]
@@ -47,6 +75,38 @@ namespace ProjetoMVC.Controllers
             }
         }
 
+        [HttpPost]
+        public IActionResult EditarUsuario(UsuarioSemSenhaModel usuarioSemSenhaModel)
+        {
+            try
+            {
+                UsuarioModel usuario = null; // --> Iremos instanciar essa variável pois a usuarioModel e a usuarioSemSenhaModel tem atributos diferentes
+
+                //Fazer a insersão desse registro, injetar o IContatoRepositorio de ContatoRepositorio
+                if (ModelState.IsValid)
+                {
+                    usuario = new UsuarioModel()
+                    {
+                        Id = usuarioSemSenhaModel.Id,
+                        Name = usuarioSemSenhaModel.Name,
+                        Login = usuarioSemSenhaModel.Login,
+                        Email = usuarioSemSenhaModel.Email,
+                        Perfil = usuarioSemSenhaModel.Perfil,
+                    };
+
+                    usuario = _usuarioRepositorio.Atualizar(usuario);
+                    TempData["MensagemSucesso"] = "Usuário editado com sucesso!";
+                    return RedirectToAction("Index");
+                }
+
+                return View(usuario);
+            }
+            catch (System.Exception erro)
+            {
+                TempData["MensagemErro"] = $"Ops, não conseguimos editar o usuário, tente novamente. Detalhe do erro: {erro.Message}";
+                return RedirectToAction("Index");
+            }
+        }
 
     }
 }

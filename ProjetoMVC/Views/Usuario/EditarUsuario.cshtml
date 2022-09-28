@@ -2,16 +2,18 @@
 @*Para vincular uma model a uma view:*@
 @model UsuarioModel
 @{
-    ViewData["Title"] = "Cadastrar usuário";
+    ViewData["Title"] = "Editar usuário";
 }
 
 <div class="text-center">
 
-    <h1 class="display-4">Cadastrar usuários</h1> 
+    <h1 class="display-4">Editar usuário</h1>
 
 </div>
 
-<form asp-controller="Usuario" asp-action="CriarUsuario" method="post">
+<form asp-controller="Usuario" asp-action="EditarUsuario" method="post">
+
+    <input type="hidden" asp-for="Id">
 
     <div class="form-group">
         <label for="nome">Nome Usuário</label>
@@ -23,14 +25,14 @@
         <label for="exampleInputEmail1">E-mail do Usuário</label>
         <input type="email" asp-for="Email" class="form-control" placeholder="jose@gmail.com">
         @Html.ValidationMessageFor(x => x.Email)
-    </div>    
-    
+    </div>
+
     <div class="form-group">
         <label for="exampleInputEmail1">Login</label>
         <input type="text" asp-for="Login" class="form-control" placeholder="Login so Usuário">
         @Html.ValidationMessageFor(x => x.Login)
-    </div>    
-    
+    </div>
+
     <div class="form-group">
         <label for="exampleInputEmail1">Perfil</label>
         <select asp-for="Perfil" class="form-control">
@@ -41,14 +43,7 @@
         @Html.ValidationMessageFor(x => x.Perfil)
     </div>
 
-    <div class="form-group">
-        <label for="exampleInputEmail1">Senha</label>
-        <input type="password" asp-for="Senha" class="form-control" placeholder="Senha do usuário">
-        @Html.ValidationMessageFor(x => x.Login)
-    </div>
-
-
-    <button type="submit" class="btn btn-primary btn-block">Adicionar</button>
+    <button type="submit" class="btn btn-primary btn-block">Editar</button>
     <a class="btn btn-secondary btn-block" asp-controller="Usuario" asp-action="Index" role="button">Voltar</a>
 </form>
 

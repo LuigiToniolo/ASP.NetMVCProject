@@ -15,7 +15,7 @@ namespace ProjetoMVC.Repositorio
         {
             this._context = bancoContext;   
         }
-        public UsuarioModel ListarPorId(int id)
+        public UsuarioModel BuscarPorId(int id)
         {
             return _context.Usuarios.FirstOrDefault(x => x.Id == id); // --> vai listar o contato correspondente do ID
         }
@@ -36,7 +36,7 @@ namespace ProjetoMVC.Repositorio
 
         public UsuarioModel Atualizar(UsuarioModel usuario)
         {
-            UsuarioModel usuarioDB = ListarPorId(usuario.Id);
+            UsuarioModel usuarioDB = BuscarPorId(usuario.Id);
 
             if (usuarioDB == null) throw new System.Exception("Houve um erro na atualização dos dados do usuario!");
 
@@ -54,7 +54,7 @@ namespace ProjetoMVC.Repositorio
 
         public bool Apagar(int id)
         {
-            UsuarioModel usuarioDB = ListarPorId(id);
+            UsuarioModel usuarioDB = BuscarPorId(id);
 
             if (usuarioDB == null) throw new System.Exception("Houve um erro na deleção do usuário!");
 

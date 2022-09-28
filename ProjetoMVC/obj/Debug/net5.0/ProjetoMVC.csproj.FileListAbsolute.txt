@@ -377,3 +377,7 @@ C:\Users\Luigi\Documents\codigos\ProjetoMVC\ProjetoMVC\bin\Debug\net5.0\System.D
 C:\Users\Luigi\Documents\codigos\ProjetoMVC\ProjetoMVC\bin\Debug\net5.0\ZstdNet.dll
 C:\Users\Luigi\Documents\codigos\ProjetoMVC\ProjetoMVC\obj\Debug\net5.0\Razor\Views\Usuario\Index.cshtml.g.cs
 C:\Users\Luigi\Documents\codigos\ProjetoMVC\ProjetoMVC\obj\Debug\net5.0\Razor\Views\Usuario\CriarUsuario.cshtml.g.cs
+C:\Users\Luigi\Documents\codigos\ProjetoMVC\ProjetoMVC\obj\Debug\net5.0\Razor\Views\Usuario\ApagarConfirmacao.cshtml.g.cs
+C:\Users\Luigi\Documents\codigos\ProjetoMVC\ProjetoMVC\obj\Debug\net5.0\Razor\Views\Usuario\EditarUsuario.cshtml.g.cs
+C:\Users\Luigi\Documents\codigos\ProjetoMVC\ProjetoMVC\obj\Debug\net5.0\Razor\Views\Login\Index.cshtml.g.cs
+C:\Users\Luigi\Documents\codigos\ProjetoMVC\ProjetoMVC\obj\Debug\net5.0\Razor\Views\Shared\_LayoutDeslogado.cshtml.g.cs

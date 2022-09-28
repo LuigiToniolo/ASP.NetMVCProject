@@ -11,5 +11,6 @@ namespace ProjetoMVC.Repositorio
         UsuarioModel Adicionar(UsuarioModel usuario);
         UsuarioModel Atualizar(UsuarioModel usuario);
         bool Apagar(int id);
+        UsuarioModel BuscarPorId(int id);
     }
 }
