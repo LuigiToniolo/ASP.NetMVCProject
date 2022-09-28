@@ -22,5 +22,9 @@ namespace ProjetoMVC.Models
         // Ver quando o usuário foi cadastrado e alterado no sistema
         public DateTime DataCadastro { get; set; }
         public DateTime? DataAtualização { get; set; } // O "?" significa que esse campo PODE ser nulo, ou seja, não é necessário
+        public bool SenhaValida(string senha)
+        {
+            return Senha == senha;
+        }
     }
 }

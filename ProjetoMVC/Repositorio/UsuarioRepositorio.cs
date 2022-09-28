@@ -10,6 +10,12 @@ namespace ProjetoMVC.Repositorio
     {
         //Precisamos acessar o bancocontext através de um método, portanto, faremos isso:
         private readonly BancoContext _context;
+
+        public UsuarioModel BuscarPorLogin(string login)
+        {
+            return _context.Usuarios.FirstOrDefault(x => x.Login.ToUpper() == login.ToUpper());
+        }
+
         //Temos que injetar o contexto para o ContatoRepositorio
         public UsuarioRepositorio(BancoContext bancoContext)
         {

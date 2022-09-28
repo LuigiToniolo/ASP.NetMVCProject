@@ -7,10 +7,12 @@ namespace ProjetoMVC.Repositorio
     {
         //Temos todos os retornos (métodos)
         //Listar usuario
+        UsuarioModel BuscarPorLogin(string login);
         List<UsuarioModel> BuscarTodos();
         UsuarioModel Adicionar(UsuarioModel usuario);
         UsuarioModel Atualizar(UsuarioModel usuario);
         bool Apagar(int id);
         UsuarioModel BuscarPorId(int id);
+        
     }
 }
